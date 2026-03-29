@@ -92,7 +92,14 @@ docker exec -it postgres_db psql -U user -d employees_db
 
 SELECT COUNT(*) FROM employees_clean;  
 SELECT * FROM employees_clean LIMIT 10;  
-
+SELECT * FROM employees_clean
+WHERE salary IS NULL OR name IS NULL;
+SELECT * FROM employees_clean
+WHERE salary IS NULL OR name IS NULL;
+ALTER TABLE employees_clean
+ADD COLUMN annual_salary NUMERIC;
+UPDATE employees_clean
+SET annual_salary = salary * 12;
 ---
 
 ## 🔄 Data Pipeline Flow
